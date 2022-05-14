@@ -2,12 +2,12 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="141534" started-at="2022-05-11T17:04:16 IST" finished-at="2022-05-11T17:06:38 IST">
+  <suite name="Default suite" duration-ms="138915" started-at="2022-05-14T13:38:57 IST" finished-at="2022-05-14T13:41:16 IST">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="141534" started-at="2022-05-11T17:04:16 IST" finished-at="2022-05-11T17:06:38 IST">
+    <test name="Default test" duration-ms="138915" started-at="2022-05-14T13:38:57 IST" finished-at="2022-05-14T13:41:16 IST">
       <class name="EmailSending.Test1">
-        <test-method status="PASS" signature="emailSend()[pri:0, instance:EmailSending.Test1@462d5aee]" name="emailSend" duration-ms="141167" started-at="2022-05-11T17:04:16 IST" finished-at="2022-05-11T17:06:37 IST">
+        <test-method status="PASS" signature="emailSend()[pri:0, instance:EmailSending.Test1@462d5aee]" name="emailSend" duration-ms="138834" started-at="2022-05-14T13:38:57 IST" finished-at="2022-05-14T13:41:16 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- emailSend -->

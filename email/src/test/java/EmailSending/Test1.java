@@ -1,5 +1,10 @@
 package EmailSending;
 
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.Toolkit;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -20,14 +25,12 @@ import org.testng.annotations.Test;
 public class Test1 {
 
 	@Test
-	public void emailSend() throws IOException, InterruptedException {
+	public void emailSend() throws IOException, InterruptedException, AWTException {
 
-		ChromeOptions options = new ChromeOptions();
-		options.addArguments("--lang=en-us");
-
+		
 		System.setProperty("webdriver.chrome.driver", "C://browserdrivers//chromedriver.exe");
 
-		WebDriver driver = new ChromeDriver(options);
+		WebDriver driver = new ChromeDriver();
 
 		// read properties file
 		Properties p = new Properties();
@@ -68,24 +71,66 @@ public class Test1 {
 			Thread.sleep(5000);
 
 		}
+		
 		//driver.findElement(By.xpath(p.getProperty("nothanks"))).click();
 		driver.findElement(By.cssSelector(p.getProperty("compose"))).click();
 		driver.findElement(By.xpath(p.getProperty("nothanks"))).click();
 		driver.findElement(By.name("to")).sendKeys("apurva.mahendrakar@cogniwize.com");
-		driver.findElement(By.name("subjectbox")).sendKeys("Email Testing- Selenium");
+		driver.findElement(By.name("subjectbox")).sendKeys("Email Sent test");
 		Thread.sleep(2000);
-		driver.findElement(By.cssSelector(".Ar.Au div")).sendKeys("Hi Apurva,sending email using automation script");
+		driver.findElement(By.cssSelector(".Ar.Au div")).sendKeys("Hi Apurva, I have sending email attachement using automation script...!!!!!  Thank You");
+		
+		//click on attach file
+		driver.findElement(By.cssSelector(".a1.aaA.aMZ")).click();
+		Thread.sleep(2000);
+		Robot rb = new Robot();
+		//copy the file path
+		StringSelection  ss = new StringSelection("D:\\downloads\\0_Apurva Adhar card.pdf");
+		Toolkit.getDefaultToolkit().getSystemClipboard().setContents(ss, null);
+		Thread.sleep(5000);
+		//ctrl+v 
+		rb.keyPress(KeyEvent.VK_CONTROL); // press on controlkey
+		rb.keyPress(KeyEvent.VK_V);   //
+		
+		rb.keyRelease(KeyEvent.VK_CONTROL);
+		rb.keyRelease(KeyEvent.VK_V);
+		
+		//enter key
+		rb.keyPress(KeyEvent.VK_ENTER);
+		rb.keyRelease(KeyEvent.VK_ENTER);
+		Thread.sleep(10000);
+		System.out.println("File Upload successfully");
 		driver.findElement(By.className("btA")).click();
 		System.out.println("Email sent successfully");
-	
-		driver.findElement(By.cssSelector(".gb_A.gb_Ka.gb_f")).click();
 		Thread.sleep(2000);
+	
+		driver.navigate().to("https://mail.google.com/mail/u/0/#sent");
 		
-		driver.switchTo().frame(3);
-		driver.findElement(By.xpath("//div[@id='yDmH0d']/c-wiz/div/div/div/div/div[2]/div[4]/span/a/div")).click();
+		Thread.sleep(3000);
+		WebElement ele = driver.findElement(By.xpath("//*[@id=\"gs_lc50\"]/input[1]"));
 		
-		System.out.println("Sign-out successfully from Application");
-
+		//ele.sendKeys(Keys.CONTROL,"a",Keys.DELETE);
+		//ele.sendKeys("Email Sent");
+		
+		boolean emailSub= driver.getPageSource().contains("Email Sent test");
+		if(emailSub) {
+			System.out.println("Email subject is verified successfully....Test is Passed!!!");
+		}
+		else {
+			System.out.println("Email subject is not found....Test is Failed!!!!");
+		}
+		
+		Thread.sleep(10000);
+		
+		driver.quit();
+		
+		//driver.findElement(By.cssSelector(".gb_A.gb_Ka.gb_f")).click();
+		//driver.switchTo().frame(3);
+		//driver.switchTo().frame(12);
+		//driver.findElement(By.xpath("//div[@id='yDmH0d']/c-wiz/div/div/div/div/div[2]/div[4]/span/a/div")).click();
+		//Thread.sleep(5000);
+		//System.out.println("Sign-out successfully from Application");
+		//driver.quit();
 	}
 
 }
