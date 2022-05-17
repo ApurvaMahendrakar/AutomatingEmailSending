@@ -102,13 +102,13 @@ public class Test1 {
 
 		// click on attach file icon
 		driver.findElement(By.cssSelector(".a1.aaA.aMZ")).click();
-		
+		Thread.sleep(1000);
 		// file handling using Robot Class
 		Robot rb = new Robot();
 		// copy the file path
 		StringSelection ss = new StringSelection("D:\\downloads\\0_Apurva Adhar card.pdf");
 		Toolkit.getDefaultToolkit().getSystemClipboard().setContents(ss, null);
-		Thread.sleep(5000);
+		Thread.sleep(1000);
 		// ctrl+v
 		rb.keyPress(KeyEvent.VK_CONTROL); // 
 		rb.keyPress(KeyEvent.VK_V); //
@@ -121,7 +121,7 @@ public class Test1 {
 		rb.keyRelease(KeyEvent.VK_ENTER);
 		//Thread.sleep(5000);
 		System.out.println("File Upload successfully");
-
+		Thread.sleep(2000);
 		// click on send button
 		driver.findElement(By.className("btA")).click();
 		System.out.println("Email sent successfully");
