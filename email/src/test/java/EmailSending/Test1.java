@@ -107,7 +107,7 @@ public class Test1 {
 		// copy the file path
 		StringSelection ss = new StringSelection("D:\\downloads\\0_Apurva Adhar card.pdf");
 		Toolkit.getDefaultToolkit().getSystemClipboard().setContents(ss, null);
-		Thread.sleep(5000);
+		Thread.sleep(10000);
 		// ctrl+v
 		rb.keyPress(KeyEvent.VK_CONTROL); // 
 		rb.keyPress(KeyEvent.VK_V); //
@@ -118,7 +118,7 @@ public class Test1 {
 		// enter key
 		rb.keyPress(KeyEvent.VK_ENTER);
 		rb.keyRelease(KeyEvent.VK_ENTER);
-		
+		Thread.sleep(5000);
 		System.out.println("File Upload successfully");
 
 		// click on send button
