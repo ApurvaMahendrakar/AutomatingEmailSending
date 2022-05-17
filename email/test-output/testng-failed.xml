@@ -5,6 +5,7 @@
     <classes>
       <class name="EmailSending.Test1">
         <methods>
+          <include name="closeDriver"/>
           <include name="emailSend"/>
         </methods>
       </class> <!-- EmailSending.Test1 -->

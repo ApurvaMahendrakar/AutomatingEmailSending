@@ -12,6 +12,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -20,46 +21,59 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 public class Test1 {
+	WebDriver driver;
+
+	@BeforeTest
+	public void launchBrowser() {
+		System.setProperty("webdriver.chrome.driver", "C://browserdrivers//chromedriver.exe");
+
+		driver = new ChromeDriver();
+	}
 
 	@Test
 	public void emailSend() throws IOException, InterruptedException, AWTException {
-
-		
-		System.setProperty("webdriver.chrome.driver", "C://browserdrivers//chromedriver.exe");
-
-		WebDriver driver = new ChromeDriver();
 
 		// read properties file
 		Properties p = new Properties();
 		FileInputStream f = new FileInputStream("D:\\email\\EmailSignIn.properties");
 		p.load(f);
-
 		// open url
 		driver.get(p.getProperty("url"));
 		driver.manage().window().maximize();
-
+		
+		 driver.manage().timeouts().implicitlyWait(2,TimeUnit.MINUTES);
+		// pass email
 		driver.findElement(By.id(p.getProperty("email"))).sendKeys("apurva.mahendrakar@cogniwize.com");
+		// click on next button
 		driver.findElement(By.xpath(p.getProperty("next"))).click();
-
-		Thread.sleep(5000);
-
+		
+		// pass password
 		driver.findElement(By.name(p.getProperty("pass"))).sendKeys("YSRK3EbB");
+		// click on next button
 		driver.findElement(By.xpath(p.getProperty("next2"))).click();
 		System.out.println("I am able to Login into Gmail Application Successfully");
-		Thread.sleep(5000);
+		
+		// click on google apps
 		driver.findElement(By.xpath(p.getProperty("google_apps"))).click();
-		Thread.sleep(5000);
+		
+		// switch to the frame
 		driver.switchTo().frame(0);
+		// click on Mail application
 		driver.findElement(By.xpath(p.getProperty("mail"))).click();
-		Thread.sleep(5000);
+		
+		// switch to default content
 		driver.switchTo().defaultContent();
 		System.out.println("in default content");
-		Thread.sleep(5000);
+		
+		// get current url of web page
 		String url1 = driver.getCurrentUrl();
 		System.out.println("getcurrent url :" + url1);
+		// handing window
 		Set<String> s1 = driver.getWindowHandles();
 		System.out.println("child window is " + s1);
 		Iterator<String> i1 = s1.iterator();
@@ -68,69 +82,69 @@ public class Test1 {
 			String ChildWindow = i1.next();
 
 			System.out.println("title" + driver.switchTo().window(ChildWindow).getTitle());
-			Thread.sleep(5000);
+			
 
 		}
-		
-		//driver.findElement(By.xpath(p.getProperty("nothanks"))).click();
+
+		// click on compose button
 		driver.findElement(By.cssSelector(p.getProperty("compose"))).click();
+		// handle notification
 		driver.findElement(By.xpath(p.getProperty("nothanks"))).click();
+		// email id of the person to whome you want to send email
 		driver.findElement(By.name("to")).sendKeys("apurva.mahendrakar@cogniwize.com");
-		driver.findElement(By.name("subjectbox")).sendKeys("Email Sent test");
-		Thread.sleep(2000);
-		driver.findElement(By.cssSelector(".Ar.Au div")).sendKeys("Hi Apurva, I have sending email attachement using automation script...!!!!!  Thank You");
+		// pass email subject
+		driver.findElement(By.name("subjectbox")).sendKeys("Email Sent test demo");
 		
-		//click on attach file
+		// pass email body
+		driver.findElement(By.cssSelector(".Ar.Au div"))
+				.sendKeys("Hi Apurva, I have sending email attachement using automation script...!!!!!, Thank You");
+
+		// click on attach file icon
 		driver.findElement(By.cssSelector(".a1.aaA.aMZ")).click();
-		Thread.sleep(2000);
+		
+		// file handling using Robot Class
 		Robot rb = new Robot();
-		//copy the file path
-		StringSelection  ss = new StringSelection("D:\\downloads\\0_Apurva Adhar card.pdf");
+		// copy the file path
+		StringSelection ss = new StringSelection("D:\\downloads\\0_Apurva Adhar card.pdf");
 		Toolkit.getDefaultToolkit().getSystemClipboard().setContents(ss, null);
 		Thread.sleep(5000);
-		//ctrl+v 
-		rb.keyPress(KeyEvent.VK_CONTROL); // press on controlkey
-		rb.keyPress(KeyEvent.VK_V);   //
-		
+		// ctrl+v
+		rb.keyPress(KeyEvent.VK_CONTROL); // 
+		rb.keyPress(KeyEvent.VK_V); //
+
 		rb.keyRelease(KeyEvent.VK_CONTROL);
 		rb.keyRelease(KeyEvent.VK_V);
-		
-		//enter key
+
+		// enter key
 		rb.keyPress(KeyEvent.VK_ENTER);
 		rb.keyRelease(KeyEvent.VK_ENTER);
-		Thread.sleep(10000);
+		
 		System.out.println("File Upload successfully");
+
+		// click on send button
 		driver.findElement(By.className("btA")).click();
 		System.out.println("Email sent successfully");
-		Thread.sleep(2000);
-	
+		
+		// navigate to sent url
 		driver.navigate().to("https://mail.google.com/mail/u/0/#sent");
 		
-		Thread.sleep(3000);
-		WebElement ele = driver.findElement(By.xpath("//*[@id=\"gs_lc50\"]/input[1]"));
-		
-		//ele.sendKeys(Keys.CONTROL,"a",Keys.DELETE);
-		//ele.sendKeys("Email Sent");
-		
-		boolean emailSub= driver.getPageSource().contains("Email Sent test");
-		if(emailSub) {
+		// search email subject for email verification
+		boolean emailSub = driver.getPageSource().contains("Email Sent test demo");
+		if (emailSub) {
 			System.out.println("Email subject is verified successfully....Test is Passed!!!");
-		}
-		else {
+		} else {
 			System.out.println("Email subject is not found....Test is Failed!!!!");
 		}
+
+	}
+
+	@AfterTest
+	public void closeDriver() throws InterruptedException {
+
 		
 		Thread.sleep(10000);
-		
+		// close all windows
 		driver.quit();
-		
-		//driver.findElement(By.cssSelector(".gb_A.gb_Ka.gb_f")).click();
-		//driver.switchTo().frame(3);
-		//driver.switchTo().frame(12);
-		//driver.findElement(By.xpath("//div[@id='yDmH0d']/c-wiz/div/div/div/div/div[2]/div[4]/span/a/div")).click();
-		//Thread.sleep(5000);
-		//System.out.println("Sign-out successfully from Application");
-		//driver.quit();
 	}
 
 }

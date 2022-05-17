@@ -2,15 +2,23 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="138915" started-at="2022-05-14T13:38:57 IST" finished-at="2022-05-14T13:41:16 IST">
+  <suite name="Default suite" duration-ms="173887" started-at="2022-05-16T11:15:18 IST" finished-at="2022-05-16T11:18:12 IST">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="138915" started-at="2022-05-14T13:38:57 IST" finished-at="2022-05-14T13:41:16 IST">
+    <test name="Default test" duration-ms="173887" started-at="2022-05-16T11:15:18 IST" finished-at="2022-05-16T11:18:12 IST">
       <class name="EmailSending.Test1">
-        <test-method status="PASS" signature="emailSend()[pri:0, instance:EmailSending.Test1@462d5aee]" name="emailSend" duration-ms="138834" started-at="2022-05-14T13:38:57 IST" finished-at="2022-05-14T13:41:16 IST">
+        <test-method status="PASS" signature="launchBrowser()[pri:0, instance:EmailSending.Test1@18bf3d14]" name="launchBrowser" is-config="true" duration-ms="10835" started-at="2022-05-16T11:15:18 IST" finished-at="2022-05-16T11:15:29 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchBrowser -->
+        <test-method status="PASS" signature="emailSend()[pri:0, instance:EmailSending.Test1@18bf3d14]" name="emailSend" duration-ms="145834" started-at="2022-05-16T11:15:29 IST" finished-at="2022-05-16T11:17:55 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- emailSend -->
+        <test-method status="PASS" signature="closeDriver()[pri:0, instance:EmailSending.Test1@18bf3d14]" name="closeDriver" is-config="true" duration-ms="17130" started-at="2022-05-16T11:17:55 IST" finished-at="2022-05-16T11:18:12 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closeDriver -->
       </class> <!-- EmailSending.Test1 -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
