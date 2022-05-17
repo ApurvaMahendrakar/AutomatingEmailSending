@@ -42,11 +42,12 @@ public class Test1 {
 		Properties p = new Properties();
 		FileInputStream f = new FileInputStream("D:\\email\\EmailSignIn.properties");
 		p.load(f);
+		 driver.manage().timeouts().implicitlyWait(2,TimeUnit.MINUTES);
 		// open url
 		driver.get(p.getProperty("url"));
 		driver.manage().window().maximize();
+
 		
-		 driver.manage().timeouts().implicitlyWait(2,TimeUnit.MINUTES);
 		// pass email
 		driver.findElement(By.id(p.getProperty("email"))).sendKeys("apurva.mahendrakar@cogniwize.com");
 		// click on next button

@@ -2,20 +2,20 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="EmailSending.Test1" duration-ms="80256" started-at="2022-05-17T12:29:01 IST" finished-at="2022-05-17T12:30:22 IST">
+  <suite name="EmailSending.Test1" duration-ms="114677" started-at="2022-05-17T12:50:09 IST" finished-at="2022-05-17T12:52:03 IST">
     <groups>
     </groups>
-    <test name="Command line test" duration-ms="80256" started-at="2022-05-17T12:29:01 IST" finished-at="2022-05-17T12:30:22 IST">
+    <test name="Command line test" duration-ms="114677" started-at="2022-05-17T12:50:09 IST" finished-at="2022-05-17T12:52:03 IST">
       <class name="EmailSending.Test1">
-        <test-method status="PASS" signature="launchBrowser()[pri:0, instance:EmailSending.Test1@1f28c152]" name="launchBrowser" is-config="true" duration-ms="11828" started-at="2022-05-17T12:29:01 IST" finished-at="2022-05-17T12:29:13 IST">
+        <test-method status="PASS" signature="launchBrowser()[pri:0, instance:EmailSending.Test1@1f28c152]" name="launchBrowser" is-config="true" duration-ms="10427" started-at="2022-05-17T12:50:09 IST" finished-at="2022-05-17T12:50:19 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- launchBrowser -->
-        <test-method status="PASS" signature="emailSend()[pri:0, instance:EmailSending.Test1@1f28c152]" name="emailSend" duration-ms="56597" started-at="2022-05-17T12:29:13 IST" finished-at="2022-05-17T12:30:10 IST">
+        <test-method status="PASS" signature="emailSend()[pri:0, instance:EmailSending.Test1@1f28c152]" name="emailSend" duration-ms="88869" started-at="2022-05-17T12:50:19 IST" finished-at="2022-05-17T12:51:48 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- emailSend -->
-        <test-method status="PASS" signature="closeDriver()[pri:0, instance:EmailSending.Test1@1f28c152]" name="closeDriver" is-config="true" duration-ms="11767" started-at="2022-05-17T12:30:10 IST" finished-at="2022-05-17T12:30:22 IST">
+        <test-method status="PASS" signature="closeDriver()[pri:0, instance:EmailSending.Test1@1f28c152]" name="closeDriver" is-config="true" duration-ms="15192" started-at="2022-05-17T12:51:48 IST" finished-at="2022-05-17T12:52:03 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- closeDriver -->
