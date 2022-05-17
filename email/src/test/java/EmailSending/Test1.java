@@ -108,7 +108,7 @@ public class Test1 {
 		// copy the file path
 		StringSelection ss = new StringSelection("D:\\downloads\\0_Apurva Adhar card.pdf");
 		Toolkit.getDefaultToolkit().getSystemClipboard().setContents(ss, null);
-		Thread.sleep(10000);
+		Thread.sleep(5000);
 		// ctrl+v
 		rb.keyPress(KeyEvent.VK_CONTROL); // 
 		rb.keyPress(KeyEvent.VK_V); //
