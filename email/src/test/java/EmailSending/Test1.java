@@ -119,7 +119,7 @@ public class Test1 {
 		// enter key
 		rb.keyPress(KeyEvent.VK_ENTER);
 		rb.keyRelease(KeyEvent.VK_ENTER);
-		Thread.sleep(5000);
+		//Thread.sleep(5000);
 		System.out.println("File Upload successfully");
 
 		// click on send button
